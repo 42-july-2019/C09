@@ -6,9 +6,10 @@
 #    By: alabreui <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 14:43:51 by alabreui          #+#    #+#              #
-#    Updated: 2019/07/22 14:47:34 by alabreui         ###   ########.fr        #
+#    Updated: 2019/07/22 14:52:29 by alabreui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 gcc -c *.c
 ar rc libft.a *.o
+ranlib libft.a
