@@ -6,7 +6,7 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 19:52:03 by exam              #+#    #+#             */
-/*   Updated: 2019/07/20 17:07:25 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/23 17:05:15 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ int		write_str(char *str, char *sep, char **array, int *j)
 {
 	int k;
 
-		while (str[*j] && is_separator(str[*j], sep))
-			(*j)++;
-		k = 0;
-		while (str[*j + k] && !is_separator(str[*j + k], sep))
-			k++;
-		if (!(*array =
-					((char *)malloc(sizeof(char) * k + 1))))
-			return (0);
-		k = 0;
-		while (str[*j] && !is_separator(str[*j], sep))
-			(*array)[k++] = str[(*j)++];
-		(*array)[k] = '\0';
+	while (str[*j] && is_separator(str[*j], sep))
+		(*j)++;
+	k = 0;
+	while (str[*j + k] && !is_separator(str[*j + k], sep))
+		k++;
+	if (!(*array =
+				((char *)malloc(sizeof(char) * k + 1))))
+		return (0);
+	k = 0;
+	while (str[*j] && !is_separator(str[*j], sep))
+		(*array)[k++] = str[(*j)++];
+	(*array)[k] = '\0';
 	return (1);
 }
 
