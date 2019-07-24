@@ -1,39 +1,30 @@
-NAME	= 	libft.a
+NAME = libft.a
 
-SCRS	=	./srcs/ft_putchar.c		\
-			./srcs/ft_putstr.c 		\
-			./srcs/ft_strcmp.c 		\
-			./srcs/ft_strlen.c 		\
-			./srcs/ft_swap.c
+PATH_SRC = ./srcs/
 
-INCLUDES = ./includes 
+HEADERS = ./includes
 
-OBJS	=	${SRCS:.c=.o}
+SRCS = $(PATH_SRC)ft_putchar.c  $(PATH_SRC)ft_swap.c $(PATH_SRC)ft_putstr.c \
+    $(PATH_SRC)ft_strlen.c $(PATH_SRC)ft_strcmp.c
 
-CC		= gcc
-RM		= rm -rf
+OBJS =  ${SRCS:.c=.o}
 
-CFLAGS	= -Wall -Wextra -Werror -I ${INCLUDES}
+FLAGS = -Wall -Wextra -Werror
 
-.c.o:
-			${CC} ${CFLAGS} -c &< -o ${<:.c=.o}
+all : $(NAME)
 
-${NAME}:	
-			${CC} ${CFLAGS} -c ./srcs/ft_putchar.c -o ./srcs/ft_putchar.o
-			${CC} ${CFLAGS} -c ./srcs/ft_putstr.c -o ./srcs/ft_putstr.o
-			${CC} ${CFLAGS} -c ./srcs/ft_strcmp.c -o ./srcs/ft_strcmp.o
-			${CC} ${CFLAGS} -c ./srcs/ft_strlen.c -o ./srcs/ft_strlen.o
-			${CC} ${CFLAGS} -c ./srcs/ft_swap.c -o ./srcs/ft_swap.o
-			ar rc ${NAME} ./srcs/ft_putchar.o ./srcs/ft_putstr.o ./srcs/ft_strcmp.o	./srcs/ft_strlen.o ./srcs/ft_swap.o
+.c.o :
+	gcc -c $(FLAGS) -I $(HEADERS) $< -o $(<:.c=.o)
 
-all:		${NAME}
+$(NAME) : ${OBJS}
+	ar rc $(NAME) $(OBJS)
 
 clean:
-			${RM} ./srcs/ft_putchar.o ./srcs/ft_putstr.o ./srcs/ft_strcmp.o	./srcs/ft_strlen.o ./srcs/ft_swap.o
+	rm -f ${OBJS}
 
-fclean:		clean
-			${RM} ${NAME}
+fclean : clean
+	rm -f $(NAME)
 
-re:			fclean all
+re : fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re
